@@ -8,7 +8,9 @@ Created on Thu Mar 30 22:04:45 2023
 import os
 import openpyxl
 import numpy as np
-#import math
+
+"""change this to True if you want to change elasticity"""
+data_change = True
 
 """change this to True if you want to add plasticity"""
 plastic_info = True
@@ -155,6 +157,15 @@ def add_elastic_info(file_contents, modulus, poisson):
 #Create a new file with updated material properties
 new_file_contents, modulus, poisson = add_elastic_info(file_contents, 300, 0.3)
 
+#Change existing Young's modulus and poisson's ratio
+def change_data(new_file_contents, modulus, poisson):
+    modulus_new = str(modulus)
+    poisson_new = str(poisson)
+    if data_change:
+        new_file_contents = new_file_contents.replace("300., 0.3", f"{modulus_new}, {poisson_new}")
+    return new_file_contents, modulus_new, poisson_new
+
+new_file_contents, modulus_new, poisson_new = change_data(file_contents, 200000000, 0.3)
 
 def add_plastic_info(new_file_contents, new_plastic_data, plastic_info):
     another_file_contents = ""
@@ -186,7 +197,7 @@ def add_plastic_info(new_file_contents, new_plastic_data, plastic_info):
         another_file_contents =  new_file_contents      
     return another_file_contents
 
-
+#Input data determination
 if excel_data==True:
     another_file_contents = add_plastic_info(new_file_contents, data, plastic_info = True)
 elif hall_petch==True:
@@ -202,4 +213,3 @@ with open(filename, "w") as f:
         f.write(new_file_contents)
     else: 
         f.write(another_file_contents)
-    
