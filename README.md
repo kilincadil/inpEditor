@@ -28,7 +28,9 @@ Make sure that the value of "plastic_info" is set to False and run the code.
 ### *To add plasticity, set "plastic_info" to True on line #14. You have three options:
 
 -Data import from an Excel file
+
 -Manual data entry
+
 -Data calculation through inpEditor from the .inp mesh file.
 
 ### *Importing from an Excel file:
