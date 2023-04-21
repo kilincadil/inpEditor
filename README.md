@@ -16,15 +16,15 @@ original input file. Also, note that the area calculation is based on CPS3
 (Three node plane stress element) type of elements which is trianglular element type.
 If you have other type of elements but triangular, in this case, we need to develop another 
 formula to calculate the area for that particular case.
-
+---
 ## **How it works:
 First, make sure you have set the working directory correctly and that 
 the name of the .inp file matches. By default, it is named *Job-1.inp*.
-
+---
 
 ### *To add elasticity only, jump to line #164 to set the modulus and Poisson ratio. 
 Make sure that the value of "plastic_info" is set to False and run the code.
-
+---
 ### *To add plasticity, set "plastic_info" to True on line #14. You have three options:
 
 -Data import from an Excel file
@@ -45,9 +45,9 @@ On line #23, change *manual_entry* to True and make sure the others(excel_data,
 hall_petch) are False.
 1)Move to line #206, change the data as you like to. 
 2)Change the part "[200., 0.], [220., 0.005] " accordingly.
+---
 
 ### *Data calculation through inpEditor:
----
 Here, before starting, note that this code only works if your mesh file has
  *elset* material groups that corresponds to each individual grains. 
  If not, the code will not find the grains since grains will not be pre-defined.
@@ -64,14 +64,13 @@ in your input file, you can use the following format:
   711,  712,  713,  739,  740,  741,  742,  743
 *Elset, elset=MATERIAL-4
 ...
-...
+..."
 
-"
 
 This part comes after the elements connectivity table. You can name elset objects 
 as you wish, here better to define as MATERIAL or GRAIN. Each numbers represent 
 the mesh elements.
----
+
 In case you have *elset* objects defined, set the hall_petch to True on line #21 and
 the code should work perfectly and create another file named *Job-1_1.inp*.
 
