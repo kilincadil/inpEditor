@@ -70,3 +70,6 @@ the mesh elements.
 ---
 In case you have *elset* objects defined, set the hall_petch to True on line 19 and
 the code should work perfectly and create another file named *Job-1_1.inp*.
+
+The function "change_data" allows to change the existing Young's modulus and Poisson's ratio for all grains. To do that, 
+make sure the data_change on line #13 is set True. Then move to line #158 and #168. Line #158 is the old values of Young's modulus and Poisson's ratio. Line #168 is the new ones you intend to change.
