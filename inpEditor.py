@@ -120,8 +120,8 @@ areas_array=list(areas.values())
 
 def add_hall_petch(sigma_0, k_y, areas_array):
     
-    sigma_0 = 270 #MPa
-    k_y = 2000 #MPa.um^0.5
+    sigma_0 = "" #MPa
+    k_y = "" #MPa.um^0.5
     d = 2*np.sqrt(areas_array)
     sigma_y = sigma_0 + k_y * d**(-0.5)
     
